@@ -1,5 +1,6 @@
 package org.acme;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class CLI {
@@ -10,7 +11,7 @@ public class CLI {
   }
  
   private String createToken() {
-    Random rnd = new Random();
+    Random rnd = new SecureRandom();
     int number = rnd.nextInt(999999);
     // this will convert the random number sequence into 6 character
     return String.format("%06d", number);
