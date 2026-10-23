@@ -10,6 +10,7 @@ public class XmlParser {
   /* reads the token request documents that clients upload */
   public Document parse(InputStream in) throws Exception {
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
     DocumentBuilder builder = factory.newDocumentBuilder();
     return builder.parse(in);
   }
