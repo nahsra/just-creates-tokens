@@ -21,7 +21,7 @@ public class XmlParser {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
       DocumentBuilder builder = factory.newDocumentBuilder();
       Document request = builder.parse(exchange.getRequestBody());
-      String user = request.getDocumentElement().getAttribute("user");
+      String user = request.getDocumentElement().getAttribute("user").strip();
       byte[] body = ("token issued for " + user).getBytes();
       exchange.sendResponseHeaders(200, body.length);
       exchange.getResponseBody().write(body);
