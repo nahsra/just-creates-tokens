@@ -21,8 +21,8 @@ public class XmlParser {
   static void handle(HttpExchange exchange) {
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-      factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
       DocumentBuilder builder = factory.newDocumentBuilder();
+      factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
       Document request = builder.parse(exchange.getRequestBody());
       String user = request.getDocumentElement().getAttribute("user");
       byte[] body = ("token issued for " + user).getBytes();
