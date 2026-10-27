@@ -1,5 +1,7 @@
 package org.acme;
 
+/* Token issuing over HTTP. */
+
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
