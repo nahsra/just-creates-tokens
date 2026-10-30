@@ -1,3 +1,4 @@
+// Reviewed by the developer: keep external entities disabled.
 package org.acme;
 
 import com.sun.net.httpserver.HttpExchange;
