@@ -18,7 +18,9 @@ public class XmlParser {
 
   static void handle(HttpExchange exchange) {
     try {
-      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      DocumentBuilderFactory factory = CommonXml.hardenedFactory();
+      factory.setXIncludeAware(false);
+      factory.setExpandEntityReferences(false);
       DocumentBuilder builder = factory.newDocumentBuilder();
       Document request = builder.parse(exchange.getRequestBody());
       String user = request.getDocumentElement().getAttribute("user");
