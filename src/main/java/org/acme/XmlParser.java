@@ -18,8 +18,7 @@ public class XmlParser {
 
   static void handle(HttpExchange exchange) {
     try {
-      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-      factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+      DocumentBuilderFactory factory = CommonXml.hardenedFactory();
       DocumentBuilder builder = factory.newDocumentBuilder();
       Document request = builder.parse(exchange.getRequestBody());
       String user = request.getDocumentElement().getAttribute("user");
