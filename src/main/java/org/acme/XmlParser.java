@@ -19,10 +19,7 @@ public class XmlParser {
 
   static void handle(HttpExchange exchange) {
     try {
-      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-      factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
-      factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
-      factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+      DocumentBuilderFactory factory = CommonXml.hardenedFactory();
       factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
       factory.setXIncludeAware(false);
       factory.setExpandEntityReferences(false);
