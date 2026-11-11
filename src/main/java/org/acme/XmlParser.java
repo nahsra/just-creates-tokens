@@ -3,6 +3,7 @@ package org.acme;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -18,7 +19,10 @@ public class XmlParser {
 
   static void handle(HttpExchange exchange) {
     try {
-      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      DocumentBuilderFactory factory = CommonXml.hardenedFactory();
+      factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+      factory.setXIncludeAware(false);
+      factory.setExpandEntityReferences(false);
       DocumentBuilder builder = factory.newDocumentBuilder();
       Document request = builder.parse(exchange.getRequestBody());
       String user = request.getDocumentElement().getAttribute("user");
